@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="login-form">
+    <form bindsubmit="loginSubmit" bindreset="loginReset" data-disabled="{{!account}}">
+      <input name="account" bindinput="validate" bindfocus="focus" bindblur="blur" data-name="account" class="account {{active==='account' ? 'active' : ''}}" />
+      <input name="password"  bindinput="validate" bindfocus="focus" bindblur="blur" data-name="password" class="password {{active==='password' ? 'active' : ''}}" />
+      <button form-type="submit" class="{{!account ? 'BGColor2' : 'BGColor1'}} colorWhite submit">登录</button>
+    </form>
+  </view>
+</view>

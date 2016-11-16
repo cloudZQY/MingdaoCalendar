@@ -1,0 +1,20 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+
+/* 公共样式 */
+.BGColor1 {
+  background-color: #1e88e5;
+}
+
+.BGColor2 {
+  background-color: rgb(144, 202, 249);
+}
+
+.colorWhite {
+  color: #fff;
+}

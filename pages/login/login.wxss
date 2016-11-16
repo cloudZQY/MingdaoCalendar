@@ -1,0 +1,31 @@
+.login-form {
+    margin-top:80px;
+}
+
+.account, .password {
+    border-bottom: 1rpx solid #ccc;
+    margin: 0 10rpx;
+    margin-bottom: 40rpx;
+    padding-left: 180rpx;
+    position: relative;
+}
+
+.account:before {
+    content: '账号';
+    position: absolute;
+    left: 20rpx;
+}
+
+.password:before {
+    content: '密码';
+    position: absolute;
+    left: 20rpx;
+}
+
+.account.active, .password.active {
+    border-color: #1e88e5;
+}
+
+.submit {
+    margin: 0 10rpx;
+}
