@@ -1,0 +1,33 @@
+.calendar-title {
+    background-color: #1e88e5;
+    color: #fff;
+    padding-left: 40rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+.detail-box {
+  margin: 20rpx 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+   box-shadow: 0 4rpx 6rpx 0 #999;
+}
+.calendar-item {
+  display: flex;
+  padding: 20rpx 5rpx;
+  border-bottom: 1px solid #ccc;
+}
+.detail-l {
+  width: 200rpx;
+  padding-left: 20rpx;
+  display: inline-block;
+}
+.center {
+  text-align: center;
+}
+.detail-r {
+  flex: 1;
+}
+.more {
+  padding-right: 30rpx;
+}

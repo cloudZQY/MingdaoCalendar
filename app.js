@@ -5,6 +5,8 @@ App({
   globalData: {
     wxUserInfo:null,
     mdAccountInfo: null,
+    mdAccountId: null,
+    calendarId: null,
   },
   onLaunch() {
     // //调用API从本地缓存中获取数据
@@ -34,18 +36,13 @@ App({
       })
     });
   },
-  getCalendar() {
-    fetchApi('Calendar', 'GetCalendars', {
-      isWorkCalendar:true,
-      isTaskCalendar:true,
-      filterTaskType:'2',
-      categoryIDs:'All',
-      memberIDs:'c9903772-ca46-496d-8ea4-fa0892b8eb37',
-      startDate:'2016-11-15',
-      endDate:'2016-11-16',
-    }).then(data => {
-      console.log(data)
-    })
+    getMdAccountInfo() {
+    const app = this;
+    return new Promise(function (resolve, reject) {
+      console.log(app.globalData.mdAccountInfo)
+      if (app.globalData.mdAccountInfo) return resolve(app.globalData.mdAccountInfo);
+      reject();
+    });
   },
   loginAndGetMdAccountInfo(formData) {
     const app = this;
@@ -66,14 +63,7 @@ App({
           });
         } else {
           setSessionId(data.sessionId);
-          user.getAccountDetail({accountId}).then(function (data) {
-            app.globalData.mdAccountInfo = data;
-            console.log('获取帐号信息成功', data)
-            resolve(app.globalData.mdAccountInfo);
-          }, function (err) {
-            console.error('获取帐号信息失败', err)
-            reject();
-          });
+          app.globalData.mdAccountId = accountId;
         }
       }, function (res) {
         wx.showModal({

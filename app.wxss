@@ -1,20 +1,34 @@
 /**app.wxss**/
+
+page {
+    height: 100%;
+}
 .container {
-  height: 100%;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-} 
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background-color: #eee;
+}
+
 
 /* 公共样式 */
+
 .BGColor1 {
-  background-color: #1e88e5;
+    background-color: #1e88e5;
 }
 
 .BGColor2 {
-  background-color: rgb(144, 202, 249);
+    background-color: rgb(144, 202, 249);
 }
 
 .colorWhite {
-  color: #fff;
+    color: #fff;
+}
+
+.overflow_ellipsis {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

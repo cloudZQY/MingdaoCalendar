@@ -20,7 +20,16 @@ function trim(str) {
   return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
+function json2Form(json) {  
+    var str = [];  
+    for(var p in json){  
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
+    }  
+    return str.join("&");  
+}  
+
 module.exports = {
   formatTime,
   trim,
+  json2Form,
 }

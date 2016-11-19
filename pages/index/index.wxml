@@ -1,11 +1,26 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{wxUserInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{wxUserInfo.nickName}}</text>
+  <view class="date-box">
+    <view wx:for="{{dateArr}}" wx:for-index="row" class="date-row">
+      <view wx:for="{{dateArr[row]}}" wx:for-item="item" class="date-item">
+        <view class="date-circle {{item.isToday ? 'today' : ''}} {{item.choosed ? 'choosed' : ''}}" bindtap="dateClick" data-date="{{item.date}}" >
+          <text>{{item.showDate}}</text>
+          <view wx:if="{{item.calendars.length}}" class="hasCalendar"></view>
+        </view>
+      </view>
+    </view>
   </view>
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{mdAccountInfo.avatar}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{mdAccountInfo.fullname}}</text>
+  <view class="calendar-box">
+    <view wx:for="{{calendars}}" wx:for-item="calendar" class="calendar-item" bindtap="toDetail" data-id="{{calendar.id}}">
+      <view class="calendar-box-l">
+        <text class="calendar-title overflow_ellipsis">{{calendar.title}}</text>
+        <text wx:if="{{calendar.allDay}}" class="calendar-title overflow_ellipsis">全天</text>
+        <text wx:if="{{!calendar.allDay}}" class="calendar-time">{{calendar.startTime}} - {{calendar.endTime}}</text>
+      </view>
+      <view class="calendar-box-r">
+        <image class="createUser" src="{{calendar.head}}" mode="scaleToFill"></image>
+      </view>
+    </view>
   </view>
+  <!--<button bindtap="logout">退出</button>-->
 </view>

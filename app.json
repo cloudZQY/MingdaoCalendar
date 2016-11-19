@@ -1,12 +1,13 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#1e88e5",
     "navigationBarTitleText": "明道日程",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"#fff"
   }
 }

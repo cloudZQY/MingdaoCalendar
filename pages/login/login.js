@@ -26,10 +26,8 @@ Page({
     this.setData({
       [event.currentTarget.dataset.name]: util.trim(event.detail.value)
     })
-    console.log(this.data)
   },
   loginSubmit(e) {
-    console.log('form发生了submit事件，携带数据为：', this.data)
     const page = this;
     if (e.currentTarget.dataset.disabled === 'true') return false;
     if (this.data.password === '') {
@@ -45,7 +43,13 @@ Page({
       if (page.data.returnUrl) {
         wx.redirectTo(this.data.returnUrl);
       } else {
-        wx.navigateBack();
+        console.log('跳转')
+        wx.redirectTo({
+          url: '../index/index',
+          fail() {
+            console.log('跳转失败')
+          }
+        });
       }
     });
   },
