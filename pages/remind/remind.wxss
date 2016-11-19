@@ -1,0 +1,14 @@
+.remind-box {
+  background-color: #fff;
+  padding: 20rpx 40rpx;
+}
+.remindTime {
+  border-bottom: 1rpx solid #ccc;
+}
+.radioGroup {
+
+}
+.radio {
+  display: block;
+  padding: 15rpx 0;
+}

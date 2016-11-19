@@ -2,7 +2,11 @@
   "pages":[
     "pages/index/index",
     "pages/login/login",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/remind/remind",
+    "pages/members/members",
+    "pages/createCalendar/createCalendar",
+    "pages/editCalendar/editCalendar"
   ],
   "window":{
     "backgroundTextStyle":"light",

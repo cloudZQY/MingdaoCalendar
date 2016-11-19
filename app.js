@@ -7,6 +7,7 @@ App({
     mdAccountInfo: null,
     mdAccountId: null,
     calendarId: null,
+    members: null,
   },
   onLaunch() {
     // //调用API从本地缓存中获取数据
@@ -64,6 +65,7 @@ App({
         } else {
           setSessionId(data.sessionId);
           app.globalData.mdAccountId = accountId;
+          resolve();
         }
       }, function (res) {
         wx.showModal({

@@ -1,0 +1,21 @@
+<!--remind.wxml-->
+<view class="container">
+  <view class="title">发起人</view>
+  <view class="detail-box">
+    <view class="members">
+      <view class="member-item">
+        <text class="name" class="memberName">{{members[0].memberName}}</text>
+        <image class="head" src="{{members[0].head}}" mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+  <view class="title" wx:if="{{members.length > 1}}">成员</view>
+  <view class="detail-box">
+    <view class="members" wx:if="{{members.length > 1}}" wx:for="{{members}}" wx:for-item="member" wx:for-index="index">
+      <view class="member-item" wx:if="{{index !==0 }}">
+        <text class="name" class="memberName">{{member.memberName}}</text>
+        <image class="head" src="{{member.head}}" mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+</view>

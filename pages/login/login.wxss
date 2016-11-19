@@ -22,10 +22,6 @@
     left: 20rpx;
 }
 
-.account.active, .password.active {
-    border-color: #1e88e5;
-}
-
 .submit {
     margin: 0 10rpx;
 }

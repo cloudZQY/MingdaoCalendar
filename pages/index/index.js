@@ -12,6 +12,9 @@ Page({
     mdAccountInfo: {},
     dateArr: [],
     calendars: [],
+    date: null,
+    activeDate: null,
+    showExit: false,
   },
   onLoad: function () {
     if (!wx.getStorageSync('md_pss_id')) {
@@ -21,10 +24,19 @@ Page({
           console.log('跳转失败')
         }
       })
-    } 
+    }
+    this.setData({
+      activeDate: moment(),
+    })
   },
   onReady() {
-    this._getDateArr(moment());
+    user.getAccountBaseInfo().then(data => {
+      app.globalData.mdAccountInfo = data;
+      this.setData({
+        mdAccountInfo: data
+      })
+      this._getDateArr(this.data.activeDate.clone());
+    });
   },
   logout() {
     wx.setStorageSync('md_pss_id', '');
@@ -41,11 +53,11 @@ Page({
         item.choosed = true;
         this.setData({
           calendars: item.calendars.map(calendar => {
-            let { title, startTime, endTime, head, allDay, id } = calendar;
+            let { title, start, end, head, allDay, id } = calendar;
             return {
               title,
-              startTime: startTime.slice(-6),
-              endTime: endTime.slice(-6),
+              startTime: start.slice(-6),
+              endTime: end.slice(-6),
               allDay,
               head,
               id,
@@ -65,58 +77,78 @@ Page({
   toDetail(e) {
     wx.navigateTo({
       url: '../detail/detail?id=' + e.currentTarget.dataset.id,
-      query: 'a',
     })
   },
   _getDateArr(mDate) {
+    this.setData({
+      date: this._format(mDate, 'YYYY-MM'),
+    })
     let dateArr = [];
     let firstDay = mDate.startOf('month').day();
     let lastDay = mDate.endOf('month').day();
     let lastDate = mDate.endOf('month').date();
-    console.log(firstDay, lastDay)
     let showAllDays = lastDate + firstDay - lastDay + 6;
-    let showFirstDay = mDate.startOf('month').subtract(firstDay - 1, 'day');
-    console.log(showFirstDay)
-    user.getAccountBaseInfo().then(data => {
-      console.log(data);
-      app.globalData.mdAccountInfo = data;
-      calendarControl.getCalendars({
-        memberIDs: app.globalData.mdAccountInfo.accountId,
-        isWorkCalendar: true,
-        isTaskCalendar: true,
-        categoryIds: 'All',
-        startDate: this._format(showFirstDay, 'YYYY-MM-DD'),
-        endDate: this._format(showFirstDay.clone().add(34, 'day')),
-      }).then(data => {
-        console.log(data.data.calendars)
-        let calendars = data.data.calendars;
-        let calendarsForDate = {};
-        calendars.forEach(calendar => {
-          let date = calendar.startTime.slice(0, 10);
-          if (calendarsForDate[date]) {
-            calendarsForDate[date].push(calendar);
-          } else {
-            calendarsForDate[date] = [calendar];
-          }
+    let showFirstDay = mDate.clone().startOf('month').subtract(firstDay - 1, 'day');
+    // 减一天开始循环
+    let accountDay = showFirstDay.clone().subtract(1, 'day');
+    for (let row = 0; row < showAllDays / 7; row ++) {
+      let week = [];
+      for (let col =0; col < 7; col ++) {
+        let date = this._format(accountDay.add(1, 'day'));
+        week.push({
+          date,
+          showDate: date.slice(date.search(/\d{1,2}$/)),
+          prevMonth: moment(date).month() < mDate.month(),
+          nextMonth: moment(date).month() > mDate.month(),
         })
-        // 减一天开始循环
-        let accountDay = showFirstDay.clone().subtract(1, 'day');
-        for (let row = 0; row < showAllDays / 7; row ++) {
-          let week = [];
-          for (let col =0; col < 7; col ++) {
-            let date = this._format(accountDay.add(1, 'day'));
-            week.push({
-              date,
-              showDate: date.slice(date.search(/\d{1,2}$/)),
-              isToday: date === this._format(moment()),
-              calendars: calendarsForDate[date] || [],
-              choosed: false,
-            })
-          }
-          dateArr.push(week);
+      }
+      dateArr.push(week);
+    }
+    this.setData({dateArr})
+    let request = calendarControl.getCalendars({
+      memberIDs: app.globalData.mdAccountInfo.accountId,
+      isWorkCalendar: true,
+      isTaskCalendar: true,
+      categoryIds: 'All',
+      startDate: this._format(showFirstDay, 'YYYY-MM-DD'),
+      endDate: this._format(showFirstDay.clone().add(34, 'day')),
+    })
+    this.request = request;
+    request.then(data => {
+      if (this.request !== request) {
+        return false;
+      }
+      let dateArr = [];
+      console.log(data.data.calendars)
+      let calendars = data.data.calendars;
+      let calendarsForDate = {};
+      calendars.forEach(calendar => {
+        let date = calendar.start.slice(0, 10);
+        if (calendarsForDate[date]) {
+          calendarsForDate[date].push(calendar);
+        } else {
+          calendarsForDate[date] = [calendar];
         }
-        this.setData({dateArr})
       })
+      // 减一天开始循环
+      let accountDay = showFirstDay.clone().subtract(1, 'day');
+      for (let row = 0; row < showAllDays / 7; row ++) {
+        let week = [];
+        for (let col =0; col < 7; col ++) {
+          let date = this._format(accountDay.add(1, 'day'));
+          week.push({
+            date,
+            showDate: date.slice(date.search(/\d{1,2}$/)),
+            isToday: date === this._format(moment()),
+            calendars: calendarsForDate[date] || [],
+            choosed: false,
+            prevMonth: moment(date).month() < mDate.month(),
+            nextMonth: moment(date).month() > mDate.month(),
+          })
+        }
+        dateArr.push(week);
+      }
+      this.setData({dateArr})
     })
   },
   _format(mDate, str = 'YYYY-MM-DD') {
@@ -128,5 +160,40 @@ Page({
     let seconds = mDate.seconds();
     const getDoubleNum = num => num < 10 ? '0' + num : '' + num;
     return str.replace('YYYY', year).replace('MM', getDoubleNum(month)).replace('DD', getDoubleNum(date)).replace('HH', getDoubleNum(hours)).replace('mm', getDoubleNum(minutes)).replace('SS', getDoubleNum(seconds));
-  }
+  },
+  toNextMonth() {
+    this.data.activeDate = this.data.activeDate.clone().add(1, 'month');
+    this._getDateArr(this.data.activeDate.clone());
+  },
+  toPrevMonth() {
+    this.data.activeDate = this.data.activeDate.clone().subtract(1, 'month');
+    this._getDateArr(this.data.activeDate.clone());
+  },
+  touchstart(e) {
+    this.clientX = e.changedTouches[0].clientX;
+    
+  },
+  touchend(e) {
+    if (e.changedTouches[0].clientX - this.clientX > 170) {
+      this.toPrevMonth();
+    }
+    if (e.changedTouches[0].clientX - this.clientX < -170) {
+      this.toNextMonth();
+    }
+  },
+  showExit(e) {
+    this.setData({
+      showExit: true,
+    })
+  },
+  hideExit() {
+    this.setData({
+      showExit: false,
+    })
+  },
+  toCreateCalendar() {
+    wx.navigateTo({
+      url: '../createCalendar/createCalendar?',
+    })
+  },
 })

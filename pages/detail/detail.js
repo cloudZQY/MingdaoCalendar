@@ -8,6 +8,7 @@ Page({
   data: {
     calendar: null,
     id: null,
+    calendarData: null,
   },
   onLoad: function (query) {
     this.data.id = query.id;
@@ -19,6 +20,7 @@ Page({
     }).then(data => {
       console.log(data);
       let calendar = data.data.calendar;
+      this.data.calendarData = calendar;
       let {
         start,
         end,
@@ -46,7 +48,7 @@ Page({
       if (allDay) {
         time = start.slice(0, 10) + '  （全天）'
       } else {
-        time = start + ' - ' + end
+        time = '从 ' + start + '到 ' + end
       }
       this.setData({
         calendar: {
@@ -66,4 +68,15 @@ Page({
   onReady() {
    
   },
+  toMembers() {
+    app.globalData.members = this.data.calendarData.members;
+    wx.navigateTo({
+      url: '../members/members',
+    })
+  },
+  toRemind() {
+    wx.navigateTo({
+      url: '../remind/remind?remindType=' + this.data.calendarData.remindType + '&remindTime=' + this.data.calendarData.remindTime + '&id=' + this.data.id,
+    })
+  }
 })

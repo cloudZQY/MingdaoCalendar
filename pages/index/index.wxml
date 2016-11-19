@@ -1,9 +1,24 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="date-box">
+  <view class="date-nav BGColor1 colorWhite">
+    <image class="userHead" src="{{mdAccountInfo.avatar}}" bindlongtap="showExit" mode="scaleToFill"></image>
+    <text class="prevMonth" bindtap="toPrevMonth">{{'<'}}</text>
+    <text class="activeDate">{{date}}</text>
+    <text class="nextMonth" bindtap="toNextMonth">{{'>'}}</text>
+  </view>
+  <view class="BGColor1 colorWhite flexRow textCenter weeks">
+    <text class="flex">一</text>
+    <text class="flex">二</text>
+    <text class="flex">三</text>
+    <text class="flex">四</text>
+    <text class="flex">五</text>
+    <text class="flex">六</text>
+    <text class="flex">七</text>
+  </view>
+  <view class="date-box textCenter" bindtouchstart="touchstart" bindtouchend="touchend" bindtouchmove="touchmove">
     <view wx:for="{{dateArr}}" wx:for-index="row" class="date-row">
       <view wx:for="{{dateArr[row]}}" wx:for-item="item" class="date-item">
-        <view class="date-circle {{item.isToday ? 'today' : ''}} {{item.choosed ? 'choosed' : ''}}" bindtap="dateClick" data-date="{{item.date}}" >
+        <view class="date-circle {{item.isToday ? 'today' : ''}} {{item.choosed ? 'choosed' : ''}} {{item.prevMonth || item.nextMonth ? 'colorGray' : ''}}" bindtap="dateClick" data-date="{{item.date}}" >
           <text>{{item.showDate}}</text>
           <view wx:if="{{item.calendars.length}}" class="hasCalendar"></view>
         </view>
@@ -20,6 +35,11 @@
       <view class="calendar-box-r">
         <image class="createUser" src="{{calendar.head}}" mode="scaleToFill"></image>
       </view>
+    </view>
+  </view>
+  <view class="shadow {{showExit ? 'show' : ''}}" bindtap="hideExit">
+    <view class="logout {{showExit ? 'show' : ''}}">
+      <button bindtap="logout">退出登录</button>
     </view>
   </view>
   <!--<button bindtap="logout">退出</button>-->

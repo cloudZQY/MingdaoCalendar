@@ -1,8 +1,37 @@
 /**index.wxss**/
+
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.container {
+  background-color: #fff;
+}
+
+.date-nav {
+  text-align: center;
+  padding-top: 15rpx;
+  padding-bottom: 25rpx;
+}
+
+.userHead {
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 0;
+  border-radius: 50%;
+}
+
+.prevMonth,
+.nextMonth {
+  padding: 0 40rpx;
+}
+
+.activeDate {
+  padding: 0 20rpx;
 }
 
 .userinfo-avatar {
@@ -16,23 +45,34 @@
   color: #aaa;
 }
 
+.date-box {
+  background: #fff;
+}
+
 .date-row {
   display: flex;
 }
+
 .date-item {
   flex: 1;
   margin-bottom: 10rpx;
 }
+
 .date-circle {
-  width: 80rpx;
+  margin: 0 14rpx;
   height: 80rpx;
   border-radius: 50%;
   text-align: center;
   line-height: 80rpx;
   position: relative;
 }
+
 .date-circle.today {
   border: 1rpx solid #ccc;
+}
+
+.date-circle.colorGray.choosed {
+  color: #fff;
 }
 
 .hasCalendar {
@@ -41,8 +81,8 @@
   height: 8rpx;
   background-color: #1e88e5;
   border-radius: 50%;
-  top: 6rpx;
-  left: 36rpx;
+  top: 12rpx;
+  left: 40rpx;
 }
 
 .choosed {
@@ -51,12 +91,14 @@
 
 .calendar-box {
   border-top: 1px solid #ccc;
+  background: #fff;
 }
 
 .calendar-item {
   display: flex;
   border-bottom: 1px solid #ccc;
   padding: 10rpx 0;
+  padding-left: 20rpx;
 }
 
 .calendar-box-l {
@@ -64,6 +106,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .calendar-title {
   width: 300px;
 }
@@ -71,7 +114,37 @@
 .calendar-box-r {
   width: 100rpx;
 }
+
 .createUser {
   width: 80rpx;
   height: 80rpx;
+  border-radius: 50%;
+}
+
+.logout {
+  position: fixed;
+  bottom: -160rpx;
+  width: 100%;
+  background: #fff;
+  transition: all linear 0.2s;
+}
+.weeks {
+  padding-bottom: 10rpx;
+}
+.shadow {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.shadow.show {
+  z-index: 10;
+}
+
+.logout.show {
+  bottom: 0;
 }

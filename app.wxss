@@ -10,6 +10,10 @@ page {
     box-sizing: border-box;
     background-color: #eee;
 }
+.container:before {
+    content: '';
+    display: table;
+}
 
 
 /* 公共样式 */
@@ -26,9 +30,36 @@ page {
     color: #fff;
 }
 
+.colorGray {
+    color: #ccc;
+}
+
 .overflow_ellipsis {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+input.active {
+    border-color: #1e88e5;
+}
+
+.detail-box {
+  margin: 20rpx 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 6rpx 0 #999;
+  overflow: hidden;
+}
+
+.flexRow {
+    display: flex;
+}
+.flex {
+    flex: 1;
+}
+.textCenter {
+    text-align: center;
 }

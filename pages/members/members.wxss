@@ -1,0 +1,21 @@
+.members {
+  background: #fff;
+}
+.member-item {
+  padding: 20rpx 40rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.head {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  float: right;
+  margin-right: 40rpx;
+}
+.title {
+  padding: 20rpx 20rpx;
+}
+.detail-box {
+  margin-top: 0;
+  margin-bottom: 0;
+}
