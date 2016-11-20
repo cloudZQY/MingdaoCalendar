@@ -1,5 +1,5 @@
-.container{
-    background:  url('/image/bg.jpg') no-repeat fixed top;
+.todayContainer{
+     background:  url('/image/bg.jpg') no-repeat fixed top;
 }
 
 

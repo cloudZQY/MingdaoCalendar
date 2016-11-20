@@ -17,6 +17,15 @@ page {
 
 
 /* 公共样式 */
+.col{
+  display: flex;
+  flex-direction: column;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
 
 .BGColor1 {
     background-color: #1e88e5;

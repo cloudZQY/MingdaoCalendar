@@ -1,5 +1,8 @@
 const login = require('../../ajax/login.js');
 const util = require('../../utils/util');
+const apiAuth = require('../../api/mingdao/auth');
+const asyncLib = require('../../utils/async');
+
 const app = getApp();
 Page({
   data: {
@@ -8,7 +11,7 @@ Page({
     active: '',
   },
   onLoad(options) {
-    this.setData({    
+    this.setData({
       returnUrl: options.returnUrl,
     });
   },
@@ -39,7 +42,19 @@ Page({
       })
       return false;
     }
-    app.loginAndGetMdAccountInfo(e.detail.value).then(function () {
+
+    asyncLib.parallel([
+      (done) => {
+        apiAuth.GetAccessToken(this.data.account, this.data.password, () => {
+          done();
+        });
+      },
+      (done) => {
+        app.loginAndGetMdAccountInfo(e.detail.value).then(function () {
+            done();
+        });
+      }
+    ], function (err) {
       if (page.data.returnUrl) {
         wx.redirectTo(this.data.returnUrl);
       } else {
@@ -52,5 +67,24 @@ Page({
         });
       }
     });
+
+
+
+
+    // app.loginAndGetMdAccountInfo(e.detail.value).then(function () {
+    //   if (page.data.returnUrl) {
+    //     wx.redirectTo(this.data.returnUrl);
+    //   } else {
+    //     console.log('跳转')
+    //     wx.redirectTo({
+    //       url: '../index/index',
+    //       fail() {
+    //         console.log('跳转失败')
+    //       }
+    //     });
+    //   }
+    // });
+
+
   },
 })

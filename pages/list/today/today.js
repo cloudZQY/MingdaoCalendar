@@ -1,6 +1,6 @@
 let app = getApp();
-let user = require('../../../ajax/users');
-let calendarApi = require('../../../ajax/calendar');
+let user = require('../../../api/mingdao/users');
+let calendarApi = require('../../../api/mingdao/calendar');
 let pages = require('../../../utils/pages');
 
 let asyncLib = require('../../../utils/async');
