@@ -12,7 +12,7 @@ Page({
     members: [],
   },
   onLoad: function (query) {
-
+    this.data.id = query.id
   },
   onShow: function () {
     if (app.globalData.addMember) {
@@ -24,7 +24,6 @@ Page({
         })
       })
       app.globalData.createMembers = this.data.members;
-      app.globalData.editMembers = this.data.members;
     }
   },
   onReady() {
@@ -36,6 +35,7 @@ Page({
   onUnload() {
     app.globalData.members = null;
     app.addMember = null;
+    app.globalData.createMembers = null;
   },
   focus() {
     this.setData({
@@ -45,7 +45,7 @@ Page({
   submit() {},
   addMember() {
     wx.navigateTo({
-      url: '../addMember/addMember'
+      url: '../addMember/addMember?id=' + (this.data.id || '')
     })
   }
 })

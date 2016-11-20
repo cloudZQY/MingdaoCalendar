@@ -63,7 +63,7 @@ Page({
   toMembers() {
     app.globalData.members = this.data.calendarData.members;
     wx.navigateTo({
-      url: '../members/members',
+      url: '../members/members?id=' + this.data.id,
     })
   },
   toRemind() {

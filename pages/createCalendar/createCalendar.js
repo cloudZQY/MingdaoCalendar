@@ -26,7 +26,7 @@ Page({
     members: []
   },
   onLoad: function(query) {
-    console.log(app)
+    this.data.form.membersIDs = [app.globalData.mdAccountInfo.accountId];
     if (query.date) {
       this.data.form.startDate = app.momentFormat(moment(query.date), 'YYYY-MM-DD HH:mm');
       this.data.form.endDate = app.momentFormat(moment(query.date).endOf('day'), 'YYYY-MM-DD HH:mm');
@@ -41,7 +41,7 @@ Page({
     if (app.globalData.createMembers) {
       this.data.members = app.globalData.createMembers;
       this.data.form.membersIDs = app.globalData.createMembers.map(member => member.accountId);
-      thissetshow();
+      this.setshow();
     }
   },
   onUnload() {
@@ -72,7 +72,7 @@ Page({
       name: data.name,
       desc: data.desc,
       address: data.address,
-      members: !data.membersIDs ? '' : data.membersIDs.length,
+      members: !data.membersIDs ? '' : data.membersIDs.length + '人',
       time,
     }
     this.setData({
@@ -101,6 +101,7 @@ Page({
       })
       return false;
     }
+    this.data.form.membersIDs = this.data.form.membersIDs.slice(1).join(',');
     calendarControl.insertCalendar(Object.assign({},this.data.form,{
       categoryID:1,
       specialAccounts:{},

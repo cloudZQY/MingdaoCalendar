@@ -1,4 +1,5 @@
  import user from '../../ajax/user'
+ import calendarControl from '../../ajax/calendar'
 
  var app = getApp()
 
@@ -7,7 +8,8 @@
      users: [],
      pageIndex: 1,
    },
-   onLoad() {
+   onLoad(query) {
+     this.data.id = query.id;
      this.getData();
    },
    getData() {
@@ -29,12 +31,21 @@
      })
    },
    addMember(e) {
-     let member = {
-       fullname: e.currentTarget.dataset.fullname,
-       avatar: e.currentTarget.dataset.avatar,
-       accountId: e.currentTarget.dataset.accountid
+     if (this.data.id) {
+       calendarControl.addMembers({
+         calendarID: this.data.id,
+         memberIDs: e.currentTarget.dataset.accountid,
+         isAllCalendar: true,
+         recurTime: '',
+         specialAccounts:{}
+       })
      }
-     app.globalData.addMember = member;
-     wx.navigateBack();
+    let member = {
+      fullname: e.currentTarget.dataset.fullname,
+      avatar: e.currentTarget.dataset.avatar,
+      accountId: e.currentTarget.dataset.accountid
+    }
+    app.globalData.addMember = member;
+    wx.navigateBack();
    }
  })
