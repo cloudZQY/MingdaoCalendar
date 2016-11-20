@@ -8,6 +8,7 @@
     padding: 20rpx;
     background: white;
     border-radius: 10rpx;
+    font-size: 26rpx;
 }
 
 .row-spliter {
@@ -26,7 +27,6 @@
 }
 .cal-creator{
     margin-top: 20rpx;
-    font-size: 30rpx;
 }
 .cal-creator-name{
     margin-left: 15rpx;
@@ -38,31 +38,24 @@
 
 .cal-date{
     width: 30%;
-    font-size: 40rpx;
 }
 .cal-name{
     padding: 10rpx;
-    font-size: 30rpx;
     width: 60%;
 }
 .lbl-address{
-     font-size: 28rpx;
 }
 .cal-address{
-    font-size: 28rpx;
 }
 .lbl-member {
-    font-size: 28rpx;
     vertical-align: middle;
 }
 
 .lbl-desc{
-    font-size: 28rpx;
     vertical-align: middle;
 }
 
 .cal-desc{
-     font-size: 28rpx;
 }
 
 .cal-descView{

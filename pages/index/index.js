@@ -212,7 +212,7 @@ Page({
     })
   },
   toList() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../list/today/today',
       fail() {
         console.log('跳转失败')
