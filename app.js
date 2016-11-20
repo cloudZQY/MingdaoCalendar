@@ -8,6 +8,7 @@ App({
     mdAccountId: null,
     calendarId: null,
     members: null,
+    createData: null,
   },
   onLaunch() {
     // //调用API从本地缓存中获取数据

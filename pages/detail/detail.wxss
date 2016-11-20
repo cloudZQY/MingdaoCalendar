@@ -5,11 +5,6 @@
     padding-top: 20rpx;
     padding-bottom: 20rpx;
 }
-.calendar-item {
-  display: flex;
-  padding: 20rpx 5rpx;
-  border-bottom: 1px solid #ccc;
-}
 .detail-l {
   width: 200rpx;
   padding-left: 20rpx;
@@ -20,9 +15,6 @@
 }
 .detail-r {
   flex: 1;
-}
-.more {
-  padding-right: 30rpx;
 }
 .calendar-time  {
   padding-right: 100rpx;

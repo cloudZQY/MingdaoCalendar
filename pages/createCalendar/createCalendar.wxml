@@ -1,4 +1,28 @@
 <view class="container">
   <view class="detail-box">
+    <view class="box-item">
+      <view class="item-l">名称</view>
+      <view class="item-r"><input type="text" placeholder="输入日程名称"></input></view>
+    </view>
+    <view class="box-item">
+      <view class="item-l">描述</view>
+      <view class="item-r"><input type="text" placeholder="输入日程描述"></input></view>
+    </view>
+    <view class="box-item">
+      <view class="item-l">地点</view>
+      <view class="item-r"><input type="text" placeholder="输入日程地点"></input></view>
+    </view>
+  </view>
+  <view class="detail-box">
+    <view class="box-item">
+      <view class="item-l">提醒</view>
+      <view class="item-r"><text>{{show.remind}}</text></view>
+      <view class="more" bindtap="toRemind">{{'点击选择    >'}}</view>
+    </view>
+    <view class="box-item">
+      <view class="item-l">人员</view>
+      <view class="item-r"><text></text></view>
+      <view class="more">{{'点击选择    >'}}</view>
+    </view>
   </view>
 </view>
