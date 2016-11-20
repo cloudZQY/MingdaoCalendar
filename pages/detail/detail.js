@@ -57,10 +57,14 @@ Page({
         }
       })
     })
+
+  },
+  editInfo() {
     
   },
+
   onReady() {
-   
+
   },
   toMembers() {
     app.globalData.members = this.data.calendarData.members;
