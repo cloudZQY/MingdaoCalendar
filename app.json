@@ -7,8 +7,9 @@
     "pages/addMember/addMember",
     "pages/remind/remind",
     "pages/members/members",
+    "pages/editCalendar/editCalendar",
     "pages/createCalendar/createCalendar",
-    "pages/editCalendar/editCalendar"
+    "pages/time/time"
   ],
   "window":{
     "backgroundTextStyle":"light",

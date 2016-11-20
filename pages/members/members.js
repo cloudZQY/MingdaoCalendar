@@ -12,7 +12,7 @@ Page({
     members: [],
   },
   onLoad: function (query) {
-    this.data.id = query.id
+    this.data.id = query.id;
   },
   onShow: function () {
     if (app.globalData.addMember) {
@@ -35,7 +35,6 @@ Page({
   onUnload() {
     app.globalData.members = null;
     app.addMember = null;
-    app.globalData.createMembers = null;
   },
   focus() {
     this.setData({

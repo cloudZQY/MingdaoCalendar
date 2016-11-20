@@ -38,6 +38,14 @@
          isAllCalendar: true,
          recurTime: '',
          specialAccounts:{}
+       }).then(data => {
+         console.log(data)
+         if (data.code === 1) {
+              wx.showToast({
+              title: '添加成功',
+              icon: 'sucess',
+            })
+         }
        })
      }
     let member = {

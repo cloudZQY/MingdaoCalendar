@@ -43,10 +43,17 @@ Page({
       this.data.form.membersIDs = app.globalData.createMembers.map(member => member.accountId);
       this.setshow();
     }
+    if (app.globalData.time) {
+      this.data.form.isAll = app.globalData.time.isAll;
+      this.data.form.startDate = app.globalData.time.startDate;
+      this.data.form.endDate = app.globalData.time.endDate;
+      this.setshow();
+    }
   },
   onUnload() {
     app.globalData.createMembers = null;
     app.createData = null;
+    app.globalData.time = null;
   },
   setshow() {
     let remind;
@@ -63,9 +70,9 @@ Page({
     }
     let time = '';
     if (data.isAll) {
-      time = app.momentFormat(moment(data.startDate), 'YYYY-MM-DD') + ' 全天'
+      time = app.momentFormat(moment(data.startDate), 'YYYY-MM-DD') + ' 到 ' + app.momentFormat(moment(data.endDate), 'YYYY-MM-DD');
     } else {
-      time = '从' + data.startDate + '到' + data.endDate;
+      time = data.startDate + '到' + data.endDate;
     }
     let show = {
       remind,
@@ -115,8 +122,14 @@ Page({
       isPrivate:false,
       recurText: '',
     })).then(data => {
-      wx.navigateBack();
-    })
+        if (data.code === 1) {
+          wx.showToast({
+            title: '创建成功',
+            icon: 'sucess',
+          })
+        }
+        wx.navigateBack();
+      })
   },
   toMember() {
     app.globalData.members = [{
@@ -126,6 +139,11 @@ Page({
     }].concat(this.data.members);
     wx.navigateTo({
       url: '../members/members'
+    })
+  },
+  toTime() {
+    wx.navigateTo({
+      url: '../time/time?isAll=' + this.data.form.isAll + '&startDate=' +this.data.form.startDate + '&endDate=' + this.data.form.endDate
     })
   }
 })

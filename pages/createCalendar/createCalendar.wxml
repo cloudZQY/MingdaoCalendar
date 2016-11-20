@@ -30,5 +30,7 @@
       <view class="more" bindtap="toMember">{{'点击添加    >'}}</view>
     </view>
   </view>
-  <button class="createCalendar" bindtap="createCalendar">创建</button>
+  <view class="detail-box">
+    <button class="createCalendar BGColor1 colorWhite" bindtap="createCalendar">创建</button>
+  </view>
 </view>

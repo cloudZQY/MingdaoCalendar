@@ -37,15 +37,18 @@ Page({
         createUserName,
       } = calendar;
       let remind = util.getRemindTxt(remindType, remindTime)
-      let time
+      let startTime,endTime;
       if (allDay) {
-        time = start.slice(0, 10) + '  （全天）'
+        startTime = start.slice(0, 10) + ' 到'
+        endTime = end.slice(0,10)
       } else {
-        time = '从 ' + start + '到 ' + end
+        startTime = start + ' 到 '
+        endTime = end
       }
       this.setData({
         calendar: {
-          time,
+          startTime,
+          endTime,
           title,
           description,
           editable,
@@ -54,6 +57,9 @@ Page({
           members,
           remind,
           createUserName,
+          start,
+          end,
+          allDay,
         }
       })
     })
@@ -75,6 +81,20 @@ Page({
   toRemind() {
     wx.navigateTo({
       url: '../remind/remind?remindType=' + this.data.calendarData.remindType + '&remindTime=' + this.data.calendarData.remindTime + '&id=' + this.data.id,
+    })
+  },
+  toEdit() {
+    app.globalData.editData = {
+      title: this.data.calendar.title,
+      desc: this.data.calendar.description,
+      address: this.data.calendar.address,
+      id: this.data.id,
+      start: this.data.calendar.start,
+      isAll: this.data.calendar.allDay,
+      end: this.data.calendar.end,
+    }
+    wx.navigateTo({
+      url: '../editCalendar/editCalendar'
     })
   }
 })
