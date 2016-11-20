@@ -41,6 +41,19 @@ class DateTime {
     return `${year}${month}${day}${hour}${minute}${second}`;
   }
 
+  static toDateFormat(eventTime) {
+    // '20160203102000';
+    let year = eventTime.substr(0, 4);
+    let month = eventTime.substr(4, 2);
+    let day = eventTime.substr(6, 2);
+    let hour = eventTime.substr(8, 2);
+    let minute = eventTime.substr(10, 2);
+    let second = eventTime.substr(12, 2);
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+
+  }
+
   static padString(str, pad = "00") {
     str = "" + str;
     let ans = pad.substring(0, pad.length - str.length) + str;

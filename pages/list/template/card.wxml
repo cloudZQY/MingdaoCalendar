@@ -1,5 +1,5 @@
 <template name="card" >
-  <view  class="card" id="event_{{event_id}}" data-id="{{event_id}}" data-index="{{index}}" bindtap="tapCard">
+  <view animation="{{animation}}" class="card {{hideDetail?'cardBlock':''}}" id="event_{{event_id}}" data-id="{{event_id}}" data-index="{{index}}" bindtap="tapCard">
 
     <!--<text>{{event_id}}</text>
     <text>{{calendarName}}</text>
@@ -25,7 +25,7 @@
           <text class="word-break">{{calendarName}}</text>
         </view>
     </view>
-    <view animation="{{animation}}" class="detail" >
+    <view  class="detail" >
       
       <view class="row-spliter {{hideDetail?'hide':''}}"></view>
       
@@ -57,6 +57,11 @@
         <text class="cal-desc">{{event_description}}</text>
       </view>
 
+      <view class="row cal-btns">
+        <button class="btn-accept" bindtap="tapConfirm" data-confirm="{{true}}" data-id="{{event_id}}" >确认</button>
+
+        <button class="btn-reject" bindtap="tapConfirm" data-confirm="{{false}}" data-id="{{event_id}}" >不能参加</button>
+      </view>
 
     </view>
   </view>

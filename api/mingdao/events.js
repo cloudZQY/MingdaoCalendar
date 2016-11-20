@@ -19,7 +19,7 @@ function formatEvents(calendars) {
         //Red = 0, Purple = 1, Cyan = 2, Orange = 3, Blue = 4, Green = 5, Yellow = 6,  Work = 99(蓝色),  任务日程Task=102（绿色）
         c.color = color(c.color);
 
-        c.hideDetail = true;
+        c.hideDetail = false;
 
         return c;
     });

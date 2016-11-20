@@ -75,6 +75,7 @@ class Auth {
     static RequestApi(url, method, data, callback) {
         let accessToken = wx.getStorageSync('access-token');
         data.access_token = accessToken;
+        url += '?access_token=' + accessToken;
         wx.request({
             url: url,
             data: data,

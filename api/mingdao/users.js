@@ -15,7 +15,7 @@ class Users extends auth {
                 email: user.email,
                 phone: user.mobile_phone
             }
-            app.globalData.mdUserInfo = cacheUser;
+            app.globalData.mdAccountInfo = cacheUser;
             typeof (callback) === 'function' ? callback(cacheUser) : null;
         });
     }
