@@ -4,6 +4,7 @@
     "pages/login/login",
     "pages/list/today/today",
     "pages/detail/detail",
+    "pages/addMember/addMember",
     "pages/remind/remind",
     "pages/members/members",
     "pages/createCalendar/createCalendar",

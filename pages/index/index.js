@@ -14,6 +14,7 @@ Page({
     calendars: [],
     date: null,
     activeDate: null,
+    choosedDate: null,
     showExit: false,
     showCreate: true,
   },
@@ -52,6 +53,7 @@ Page({
     this.showCreate();
     let dateArr = this.data.dateArr.map(week => week.map(item => {
       if (item.date === event.currentTarget.dataset.date) {
+        this.data.choosedDate = item.date;
         item.choosed = true;
         this.setData({
           calendars: item.calendars.map(calendar => {
@@ -83,7 +85,7 @@ Page({
   },
   _getDateArr(mDate) {
     this.setData({
-      date: this._format(mDate, 'YYYY-MM'),
+      date: app.momentFormat(mDate, 'YYYY-MM'),
     })
     let dateArr = [];
     let firstDay = mDate.startOf('month').day();
@@ -96,7 +98,7 @@ Page({
     for (let row = 0; row < showAllDays / 7; row ++) {
       let week = [];
       for (let col =0; col < 7; col ++) {
-        let date = this._format(accountDay.add(1, 'day'));
+        let date = app.momentFormat(accountDay.add(1, 'day'));
         week.push({
           date,
           showDate: date.slice(date.search(/\d{1,2}$/)),
@@ -112,8 +114,8 @@ Page({
       isWorkCalendar: true,
       isTaskCalendar: true,
       categoryIds: 'All',
-      startDate: this._format(showFirstDay, 'YYYY-MM-DD'),
-      endDate: this._format(showFirstDay.clone().add(34, 'day')),
+      startDate: app.momentFormat(showFirstDay, 'YYYY-MM-DD'),
+      endDate: app.momentFormat(showFirstDay.clone().add(34, 'day')),
     })
     this.request = request;
     request.then(data => {
@@ -137,11 +139,11 @@ Page({
       for (let row = 0; row < showAllDays / 7; row ++) {
         let week = [];
         for (let col =0; col < 7; col ++) {
-          let date = this._format(accountDay.add(1, 'day'));
+          let date = app.momentFormat(accountDay.add(1, 'day'));
           week.push({
             date,
             showDate: date.slice(date.search(/\d{1,2}$/)),
-            isToday: date === this._format(moment()),
+            isToday: date === app.momentFormat(moment()),
             calendars: calendarsForDate[date] || [],
             choosed: false,
             prevMonth: moment(date).month() < mDate.month(),
@@ -152,16 +154,6 @@ Page({
       }
       this.setData({dateArr})
     })
-  },
-  _format(mDate, str = 'YYYY-MM-DD') {
-    let year = mDate.year();
-    let month = mDate.month() + 1;
-    let date = mDate.date();
-    let hours = mDate.hours();
-    let minutes = mDate.minutes();
-    let seconds = mDate.seconds();
-    const getDoubleNum = num => num < 10 ? '0' + num : '' + num;
-    return str.replace('YYYY', year).replace('MM', getDoubleNum(month)).replace('DD', getDoubleNum(date)).replace('HH', getDoubleNum(hours)).replace('mm', getDoubleNum(minutes)).replace('SS', getDoubleNum(seconds));
   },
   toNextMonth() {
     this.data.activeDate = this.data.activeDate.clone().add(1, 'month');
@@ -195,7 +187,7 @@ Page({
   },
   toCreateCalendar() {
     wx.navigateTo({
-      url: '../createCalendar/createCalendar?',
+      url: '../createCalendar/createCalendar?date=' + (this.data.choosedDate ? this.data.choosedDate : app.momentFormat()),
     })
   },
   scroll(e) {

@@ -2,31 +2,31 @@
 <view class="container">
   <view class="calendar-title overflow_ellipsis" style="width: 100%; box-sizing: border-box;">{{calendar.title}}</view>
   <view class="detail-box">
-    <view class="calendar-time calendar-item">
+    <view class="calendar-time box-item">
         <text class="detail-l">时间：</text>
         <text class="detail-r">{{calendar.time}}</text>
       </view>
-      <view wx:if="{{calendar.description}}" class="calendar-description calendar-item">
+      <view wx:if="{{calendar.description}}" class="calendar-description box-item">
         <text class="detail-l">描述：</text>
         <input type="text" class="detail-r" value="{{calendar.description}}"></input>
       </view>
-      <view wx:if="{{calendar.adress}}"  class="calendar-adress calendar-item">
+      <view wx:if="{{calendar.adress}}"  class="calendar-adress box-item">
         <text class="detail-l">地址</text>
         <input type="text" class="detail-r">{{calendar.adress}}</input>
       </view>
   </view>
   <view class="detail-box">
-      <view class="calendar-createUser calendar-item">
+      <view class="calendar-createUser box-item">
         <text class="detail-l">发起人：</text>
         <text class="detail-r">{{calendar.createUserName}}</text>
       </view>
-      <view class="calendar-createUser calendar-item" bindtap="toMembers">
+      <view class="calendar-createUser box-item" bindtap="toMembers">
         <text class="detail-l">参与人员：</text>
         <text class="detail-r">{{calendar.members.length + '人'}}</text>
         <text class="more">{{">"}}</text>
       </view>
-      <view class="calendar-remind calendar-item" bindtap="toRemind">
-        <text class="detail-l">提前：</text>
+      <view class="calendar-remind box-item" bindtap="toRemind">
+        <text class="detail-l">提醒：</text>
         <text class="detail-r">{{calendar.remind}}</text>
         <text class="more">{{">"}}</text>
       </view>

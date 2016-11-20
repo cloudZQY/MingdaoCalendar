@@ -3,6 +3,11 @@
      background: #eee;
 }
 
+.todayContainer:before {
+    content: '';
+    display: table;
+}
+
 
 .card {
     border: #e0e0e0 1rpx solid;

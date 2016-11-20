@@ -1,0 +1,12 @@
+.box-item {
+  display: flex;
+}
+.item-l {
+  width: 150rpx;
+}
+.item-r {
+  flex: 1;
+}
+.item-r input {
+  width: 100%;
+}

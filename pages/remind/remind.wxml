@@ -4,13 +4,13 @@
     <input type="text" value="{{remindTime}}" bindinput="input" class="remindTime {{active ? 'active' : ''}}" bindfocus="focus" bindblur="blur"></input>
       <radio-group class="radio-group" bindchange="radioChange">
         <label class="radio">
-          <radio bindchange="radioChange" value="{{1}}" checked="{{remindType === 1}}"/>天
+          <radio bindchange="radioChange" value="{{1}}" checked="{{remindType === 1}}"/>分钟
         </label>
         <label class="radio">
           <radio bindchange="radioChange" value="{{2}}" checked="{{remindType === 2}}"/>小时
         </label>
         <label class="radio">
-          <radio bindchange="radioChange" value="{{3}}" checked="{{remindType === 3}}"/>分钟
+          <radio bindchange="radioChange" value="{{3}}" checked="{{remindType === 3}}"/>天
         </label>
         <label class="radio">
           <radio bindchange="radioChange" value="{{0}}" checked="{{remindType === 0}}"/>无

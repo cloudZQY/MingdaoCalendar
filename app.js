@@ -1,6 +1,7 @@
 const {setSessionId, fetchApi} = require('ajax/_api.js');
 const login = require('ajax/login.js');
 const user = require('ajax/user.js');
+const moment = require('utils/moment.min.js')
 App({
   globalData: {
     accessToken: null,
@@ -14,6 +15,8 @@ App({
     mdAccountId: null,
     calendarId: null,
     members: null,
+    createData: null,
+    addMember: null,
   },
   onLaunch() {
     // //调用API从本地缓存中获取数据
@@ -81,6 +84,19 @@ App({
         });
       });
     });
-  }
+  },
+  momentFormat (mDate, str = 'YYYY-MM-DD') {
+    if (!mDate) {
+      mDate = moment();
+    }
+    let year = mDate.year();
+    let month = mDate.month() + 1;
+    let date = mDate.date();
+    let hours = mDate.hours();
+    let minutes = mDate.minutes();
+    let seconds = mDate.seconds();
+    const getDoubleNum = num => num < 10 ? '0' + num : '' + num;
+    return str.replace('YYYY', year).replace('MM', getDoubleNum(month)).replace('DD', getDoubleNum(date)).replace('HH', getDoubleNum(hours)).replace('mm', getDoubleNum(minutes)).replace('SS', getDoubleNum(seconds));
+  },
 
 })

@@ -26,10 +26,40 @@ function json2Form(json) {
         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
     }  
     return str.join("&");  
-}  
+} 
+
+function getRemindTxt(remindType, remindTime) {
+  let remind = remindTime;
+  if (remindType === 0) {
+    remind = '不提醒';
+  } else if (remindType === 1) {
+    remind = '提前' + remind + '分钟'
+  } else if (remindType === 2) {
+    remind = '提前' + remind / 60 + '小时'
+  } else if (remindType === 3) {
+    remind = '提前' + remind / 1440 + '天'
+  }
+  return remind;
+}
+
+function getApiRemindNum(remindType, remindTime) {
+  let remindNum;
+  if (remindType === 1) {
+    remindNum= parseInt(remindTime);
+  } else if (remindType === 2) {
+    remindNum= parseInt(remindTime) * 60;
+  } else if (remindType === 3) {
+    remindNum= parseInt(remindTime) * 1440;
+  } else {
+    remindNum= 15;
+  }
+  return remindNum;
+}
 
 module.exports = {
   formatTime,
   trim,
   json2Form,
+  getRemindTxt,
+  getApiRemindNum,
 }

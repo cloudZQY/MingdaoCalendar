@@ -49,12 +49,20 @@ Page({
     this.data.remindType = parseInt(e.detail.value)
   },
   submit() {
-    calendarControl.updateMemberRemind({
-      remindTime: this.data.remindTime,
-      remindType: this.data.remindType,
-      calendarID: this.data.id,
-    }).then(data => {
+    if(this.data.id) {
+      calendarControl.updateMemberRemind({
+        remindTime: this.data.remindTime,
+        remindType: this.data.remindType,
+        calendarID: this.data.id,
+      }).then(data => {
+        wx.navigateBack()
+      })
+    } else {
+      app.createData = {
+        remindTime: this.data.remindTime,
+        remindType: this.data.remindType,
+      }
       wx.navigateBack()
-    })
+    }
   }
 })

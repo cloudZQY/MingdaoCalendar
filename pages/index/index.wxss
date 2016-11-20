@@ -151,7 +151,6 @@
 
 .createBtn {
   font-size: 85rpx;
-  font-weight: bold;
   position: fixed;
   right: 25rpx;
   bottom: 20rpx;

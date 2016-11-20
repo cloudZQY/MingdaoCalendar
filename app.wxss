@@ -73,3 +73,11 @@ input.active {
 .textCenter {
     text-align: center;
 }
+.box-item {
+  display: flex;
+  padding: 20rpx 5rpx;
+  border-bottom: 1px solid #ccc;
+}
+.more {
+  padding-right: 30rpx;
+}
