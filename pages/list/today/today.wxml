@@ -1,9 +1,9 @@
-<!--<import src="../template/card.wxml" />-->
+<import src="../template/card.wxml" />
 
-<view class="container">
-    1
-    <!--<view wx:for="{{events}}">
+<view class="todayContainer">
+    
+    <view wx:for="{{events}}">
         <template is="card" data="{{...item}}" class="card"></template>
-    </view>  -->
+    </view>  
 </view>
 

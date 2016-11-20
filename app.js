@@ -3,7 +3,12 @@ const login = require('ajax/login.js');
 const user = require('ajax/user.js');
 App({
   globalData: {
-    wxUserInfo:null,
+    accessToken: null,
+    refreshToken: null,
+    appKey: "02CAB33E3A1D",
+    appSecret: "604FCD37EE933BE4D3275D4A20EB98E6",
+    mdUserInfo: null,
+    wxUserInfo: null,
     mdAccountInfo: null,
     mdAccountId: null,
     calendarId: null,
@@ -38,7 +43,7 @@ App({
       })
     });
   },
-    getMdAccountInfo() {
+  getMdAccountInfo() {
     const app = this;
     return new Promise(function (resolve, reject) {
       console.log(app.globalData.mdAccountInfo)
