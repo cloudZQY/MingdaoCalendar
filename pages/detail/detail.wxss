@@ -1,3 +1,6 @@
+.detail-top{  
+    background-color: #1e88e5;
+}
 .calendar-title {
     background-color: #1e88e5;
     color: #fff;
@@ -5,6 +8,15 @@
     padding-top: 20rpx;
     padding-bottom: 20rpx;
 }
+.calendar-edit {
+    background-color: #1e88e5;
+    color: #fff;
+    padding-top: 20rpx;
+    padding-right: 20rpx;
+    padding-bottom: 20rpx;
+    float: right;
+}
+
 .detail-l {
   width: 200rpx;
   padding-left: 20rpx;
