@@ -2,9 +2,9 @@
 <view class="container">
 
   <view class="detail-top">
-    <view class="calendar-title overflow_ellipsis" style="width: 80%%; box-sizing: border-box;">{{calendar.title}}</view>
+    <text class="calendar-title overflow_ellipsis" style="width: 80%; box-sizing: border-box;">{{calendar.title}}</text>
   
-    <view class="calendar-edit overflow_ellipsis" style="box-sizing: border-box;display:{{calendar.editable==true?'block':'none'}}" bindtap="editInfo">编辑</view>
+    <text class="calendar-edit"  bindtap="editInfo">编辑</text>
   </view >
   <view class="detail-box">
     <view class="calendar-time box-item">

@@ -34,7 +34,7 @@
 .title {
   width: 80%;
 }
-.edit {
+.calendar-edit {
   float: right;
   margin-right: 20rpx;
   margin-top: -5rpx;
