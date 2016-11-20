@@ -8,6 +8,7 @@ App({
     refreshToken: null,
     appKey: "02CAB33E3A1D",
     appSecret: "604FCD37EE933BE4D3275D4A20EB98E6",
+    mdAccountInfo: null,
     mdUserInfo: null,
     wxUserInfo: null,
     mdAccountInfo: null,

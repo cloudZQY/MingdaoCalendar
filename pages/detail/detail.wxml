@@ -1,9 +1,11 @@
 <!--detail.wxml-->
 <view class="container">
-  <view class="calendar-title" style="width: 100%; box-sizing: border-box;">
-    <text class="title overflow_ellipsis">{{calendar.title}}</text>
-    <text class="edit" bindtap="toEdit">编辑</text>
-  </view>
+
+  <view class="detail-top">
+    <view class="calendar-title overflow_ellipsis" style="width: 80%%; box-sizing: border-box;">{{calendar.title}}</view>
+  
+    <view class="calendar-edit overflow_ellipsis" style="box-sizing: border-box;display:{{calendar.editable==true?'block':'none'}}" bindtap="editInfo">编辑</view>
+  </view >
   <view class="detail-box">
     <view class="calendar-time box-item">
         <view class="detail-l">时间：</view>

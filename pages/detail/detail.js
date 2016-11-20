@@ -28,6 +28,7 @@ Page({
         title,
         description,
         address,
+        editable,
         isRecur,
         members,
         remindTime,
@@ -50,6 +51,7 @@ Page({
           endTime,
           title,
           description,
+          editable,
           address,
           isRecur,
           members,
@@ -61,10 +63,14 @@ Page({
         }
       })
     })
+
+  },
+  editInfo() {
     
   },
+
   onReady() {
-   
+
   },
   toMembers() {
     app.globalData.members = this.data.calendarData.members;

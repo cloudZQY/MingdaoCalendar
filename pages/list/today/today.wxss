@@ -1,5 +1,6 @@
 .todayContainer{
-     background:  url('/image/bg.jpg') no-repeat fixed top;
+     /*background:  url('/image/bg.jpg') no-repeat fixed top;*/
+     background: #eee;
 }
 
 .todayContainer:before {
@@ -9,11 +10,13 @@
 
 
 .card {
+    border: #e0e0e0 1rpx solid;
     margin: 20rpx 20rpx;
     padding: 20rpx;
     background: white;
     border-radius: 10rpx;
     font-size: 26rpx;
+    overflow-y: hidden;
 }
 
 .row-spliter {
@@ -88,17 +91,35 @@
 .detail{    
     background: white;
     overflow-y: hidden;
-    height: 0;
+    /*height: 0;*/
+}
+
+
+.cal-btns{
+    margin: 20rpx 0 0 0;
+}
+
+.btn-accept{
+    width: 66%;
+    line-height: 60rpx;
+    height: 60rpx;
+    background-color: #3cbf2a;
+    color: white;
+}
+
+.btn-reject{
+    width: 30%;
+    line-height: 60rpx;
+    height: 60rpx;
+    background-color: #455a64;
+    color: white;
 }
 
 
 
-
-
-
-
-
-
+.cardBlock{
+    display: none;
+}
 
 
 
