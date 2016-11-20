@@ -205,7 +205,7 @@ Page({
   },
   toList() {
     wx.navigateTo({
-      url: '../addMember/addMember',
+      url: '../list/today/today',
       fail() {
         console.log('跳转失败')
       }
