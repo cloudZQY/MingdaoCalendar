@@ -55,6 +55,12 @@ Page({
         remindType: this.data.remindType,
         calendarID: this.data.id,
       }).then(data => {
+         if (data.code === 1) {
+              wx.showToast({
+              title: '修改成功',
+              icon: 'sucess',
+            })
+         }
         wx.navigateBack()
       })
     } else {

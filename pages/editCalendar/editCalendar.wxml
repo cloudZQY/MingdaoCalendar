@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="detail-box">
+    <view class="edit-item">
+      <view class="edit-l">标题</view>
+      <view class="edit-r"><input bindinput="titleChange" placeholder="请输入标题" value="{{title}}"></input></view>
+    </view>
+    <view class="edit-item">
+      <view class="edit-l">描述</view>
+      <view class="edit-r"><input bindinput="descChange" placeholder="请输入描述" value="{{desc}}"></input></view>
+    </view>
+    <view class="edit-item">
+      <view class="edit-l">地址</view>
+      <view class="edit-r"><input bindinput="addressChange" placeholder="请输入地址" value="{{address}}"></input></view>
+    </view>
+  </view>
+  <view class="detail-box">
+      <view class="edit-item">
+        <view class="edit-l">时间</view>
+        <view class="edit-r time" bindtap="toTime">
+          <view>{{show.startTime}}</view>
+          <view>{{show.endTime}}</view>
+        </view>
+      </view>
+  </view>
+  <view class="detail-box">
+    <button class="BGColor1 colorWhite" bindtap="submit">修改</button>
+  </view>
+</view>

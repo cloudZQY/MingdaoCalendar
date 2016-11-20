@@ -19,3 +19,11 @@
 .calendar-time  {
   padding-right: 100rpx;
 }
+.title {
+  width: 80%;
+}
+.edit {
+  float: right;
+  margin-right: 20rpx;
+  margin-top: -5rpx;
+}

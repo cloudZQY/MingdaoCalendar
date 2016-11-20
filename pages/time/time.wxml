@@ -1,0 +1,50 @@
+<!--remind.wxml-->
+<view class="container">
+  <view class="detail-box">
+    <view class="time-item">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" bindtap="changeAllDay">
+          <checkbox value="{{'isAll'}}" checked="{{isAll}}"/> 全天
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="detail-box">
+    <view class="time-item">
+      <view class="item-l">开始时间</view>
+      <view class="item-r">
+        <picker mode="date" value="{{show.startDate}}" start="2015-09-01" end="2017-09-01" bindchange="startDateChange">
+          <view class="picker">
+            {{show.startDate}}
+          </view>
+        </picker>
+        <picker wx:if="{{!isAll}}" mode="time" value="{{show.startTime}}" start="00:00" end="23:99" bindchange="startTimeChange">
+          <view class="picker">
+            {{show.startTime}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="detail-box">
+    <view class="time-item">
+      <view class="item-l">结束时间</view>
+      <view class="item-r">
+        <picker mode="date" value="{{show.endDate}}" start="2015-09-01" end="2017-09-01" bindchange="endDateChange">
+          <view class="picker">
+            {{show.endDate}}
+          </view>
+        </picker>
+        <picker wx:if="{{!isAll}}" mode="time" value="{{show.endTime}}" start="00:00" end="23:99" bindchange="endTimeChange">
+          <view class="picker">
+            {{show.endTime}}
+          </view>
+        </picker>
+      </view>
+    </view>
+   
+  </view>
+  <view class="detail-box">
+    <button class="BGColor1 colorWhite" bindtap="submit">确定</button>
+  </view>
+</view>
