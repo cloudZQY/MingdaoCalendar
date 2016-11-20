@@ -15,6 +15,7 @@ Page({
     date: null,
     activeDate: null,
     showExit: false,
+    showCreate: true,
   },
   onLoad: function () {
     if (!wx.getStorageSync('md_pss_id')) {
@@ -48,6 +49,7 @@ Page({
       });
   },
   dateClick(event) {
+    this.showCreate();
     let dateArr = this.data.dateArr.map(week => week.map(item => {
       if (item.date === event.currentTarget.dataset.date) {
         item.choosed = true;
@@ -196,4 +198,25 @@ Page({
       url: '../createCalendar/createCalendar?',
     })
   },
+  scroll(e) {
+    console.log(e)
+  },
+  showCreate(e) {
+    this.setData({
+      showCreate: true,
+    })
+  },
+  hideCreate(e) {
+    this.setData({
+      showCreate: false,
+    })
+  },
+  toList() {
+    wx.redirectTo({
+      url: '../list/today/today',
+      fail() {
+        console.log('跳转失败')
+      }
+    })
+  }
 })

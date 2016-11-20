@@ -148,3 +148,23 @@
 .logout.show {
   bottom: 0;
 }
+
+.createBtn {
+  font-size: 85rpx;
+  font-weight: bold;
+  position: fixed;
+  right: 25rpx;
+  bottom: 20rpx;
+  border-radius: 50%;
+  display: block;
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #e91e63;
+  text-align: center;
+  box-shadow: -2rpx 5rpx 20rpx rgba(0,0,0,0.5);
+  transition: all linear 0.25s;
+}
+.createBtn.hide {
+  bottom: -70rpx;
+}

@@ -1,10 +1,11 @@
 <!--index.wxml-->
-<view class="container">
+<scroll-view class="container" bindscroll="scroll" scroll-y="true" bindscrolltolower="hideCreate" bindscrolltoupper="showCreate">
   <view class="date-nav BGColor1 colorWhite">
     <image class="userHead" src="{{mdAccountInfo.avatar}}" bindlongtap="showExit" mode="scaleToFill"></image>
     <text class="prevMonth" bindtap="toPrevMonth">{{'<'}}</text>
     <text class="activeDate">{{date}}</text>
     <text class="nextMonth" bindtap="toNextMonth">{{'>'}}</text>
+    <text class="more-handle" bindtap="toList">...</text>
   </view>
   <view class="BGColor1 colorWhite flexRow textCenter weeks">
     <text class="flex">一</text>
@@ -42,5 +43,5 @@
       <button bindtap="logout">退出登录</button>
     </view>
   </view>
-  <!--<button bindtap="logout">退出</button>-->
-</view>
+  <view class="createBtn colorWhite {{showCreate ? '' : 'hide'}}" bindtap="toCreateCalendar">+</view>
+</scroll-view>

@@ -1,3 +1,6 @@
+.container {
+    background-color: #fff;
+}
 .login-form {
     margin-top:80px;
 }
