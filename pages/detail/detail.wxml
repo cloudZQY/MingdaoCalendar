@@ -4,7 +4,7 @@
   <view class="detail-top">
     <text class="calendar-title overflow_ellipsis" style="width: 80%; box-sizing: border-box;">{{calendar.title}}</text>
   
-    <text class="calendar-edit"  bindtap="editInfo">编辑</text>
+    <text class="calendar-edit"  bindtap="toEdit">编辑</text>
   </view >
   <view class="detail-box">
     <view class="calendar-time box-item">
@@ -38,5 +38,12 @@
         <text class="detail-r">{{calendar.remind}}</text>
         <text class="more">{{">"}}</text>
       </view>
+  </view>
+  <view class="detail-box">
+    <button class="BGColor1 colorWhite" bindtap="share">分享给好友</button>
+  </view>
+  <text style="padding-left:20rpx" wx:if="{{share}}">复制链接分享给好友</text>
+  <view class="detail-box" wx:if="{{share}}">
+    <textarea type="text" value="{{shareTxt}}"></textarea>
   </view>
 </view>

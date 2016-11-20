@@ -22,6 +22,7 @@ Page({
       console.log(data);
       let calendar = data.data.calendar;
       this.data.calendarData = calendar;
+      let token = data.data.token;
       let {
         start,
         end,
@@ -60,6 +61,7 @@ Page({
           start,
           end,
           allDay,
+          token,
         }
       })
     })
@@ -95,6 +97,13 @@ Page({
     }
     wx.navigateTo({
       url: '../editCalendar/editCalendar'
+    })
+  },
+  share() {
+    let calendar = this.data.calendar;
+    this.setData({
+      share: true,
+      shareTxt: '分享自明道日程 \r\n 时间：' + calendar.startTime + calendar.endTime + '\r\n地点：' + calendar.address + '\r\n描述：' + calendar.description + '\r\n https://www.mingdao.com/m/detail/calendar/?token=' + calendar.token
     })
   }
 })
