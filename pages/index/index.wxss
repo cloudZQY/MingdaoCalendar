@@ -167,3 +167,17 @@
 .createBtn.hide {
   bottom: -70rpx;
 }
+
+.more-handle{
+  font-size: 30rpx;
+  width: 20rpx;
+  height: 20rpx;
+  color: red;
+  text-align: center;
+  background-image: -webkit-linear-gradient(#7aa1d3, #4078c0);
+  background-image: linear-gradient(red, red);
+  background-clip: padding-box;
+  border-radius: 50%;
+}
+
+

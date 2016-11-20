@@ -1,21 +1,40 @@
 <!--remind.wxml-->
 <view class="container">
-  <view class="remind-box detail-box">
-    <input type="text" value="{{remindTime}}" bindinput="input" class="remindTime {{active ? 'active' : ''}}" bindfocus="focus" bindblur="blur"></input>
-      <radio-group class="radio-group" bindchange="radioChange">
-        <label class="radio">
-          <radio bindchange="radioChange" value="{{1}}" checked="{{remindType === 1}}"/>分钟
-        </label>
-        <label class="radio">
-          <radio bindchange="radioChange" value="{{2}}" checked="{{remindType === 2}}"/>小时
-        </label>
-        <label class="radio">
-          <radio bindchange="radioChange" value="{{3}}" checked="{{remindType === 3}}"/>天
-        </label>
-        <label class="radio">
-          <radio bindchange="radioChange" value="{{0}}" checked="{{remindType === 0}}"/>无
-        </label>
-      </radio-group>
-    <button class="BGColor1 colorWhite" style="margin-top: 20rpx;" bindtap="submit">确定</button>
-  </view>
-</view>
+			<view class="remind-box detail-box">
+				<input type="text" value="{{remindTime}}" bindinput="input" class="remindTime {{active ? 'active' : ''}}"
+				bindfocus="focus" bindblur="blur" />
+				<radio-group class="radio-group" bindchange="radioChange">
+					<view>
+						<radio id="minute" bindchange="radioChange" value="{{1}}" checked="{{remindType === 1}}"
+						/>
+						<label class="radio" for="minute">
+							分钟
+						</label>
+					</view>
+					<view>
+						<radio id="hour" bindchange="radioChange" value="{{2}}" checked="{{remindType === 2}}"
+						/>
+						<label class="radio" for="hour">
+							小时
+						</label>
+					</view>
+					<view>
+						<radio id="day" bindchange="radioChange" value="{{3}}" checked="{{remindType === 3}}"
+						/>
+						<label class="radio" for="day">
+							天
+						</label>
+					</view>
+					<view>
+						<radio id="none" bindchange="radioChange" value="{{0}}" checked="{{remindType === 0}}"
+						/>
+						<label class="radio" for="none">
+							无
+						</label>
+					</view>
+				</radio-group>
+				<button class="BGColor1 colorWhite" style="margin-top: 20rpx;" bindtap="submit">
+					确定
+				</button>
+			</view>
+		</view>

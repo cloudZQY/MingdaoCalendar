@@ -17,6 +17,8 @@ Page({
     choosedDate: null,
     showExit: false,
     showCreate: true,
+    unconfirm: 0,
+    animation: null,
   },
   onLoad: function () {
     if (!wx.getStorageSync('md_pss_id')) {
@@ -39,15 +41,28 @@ Page({
       })
       this._getDateArr(this.data.activeDate.clone());
     });
+
+    let req = calendarControl.getUserInvitedCalendarsCount({});
+    req.then(data => {
+      this.setData({ unconfirm: data.data })
+    });
+
+    this.i = 1;
+    this.animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: "ease-in",
+      delay: 0
+    });
+
   },
   logout() {
     wx.setStorageSync('md_pss_id', '');
-     wx.redirectTo({
-        url: '../login/login',
-        fail() {
-          console.log('跳转失败')
-        }
-      });
+    wx.redirectTo({
+      url: '../login/login',
+      fail() {
+        console.log('跳转失败')
+      }
+    });
   },
   dateClick(event) {
     this.showCreate();
@@ -95,9 +110,9 @@ Page({
     let showFirstDay = mDate.clone().startOf('month').subtract(firstDay - 1, 'day');
     // 减一天开始循环
     let accountDay = showFirstDay.clone().subtract(1, 'day');
-    for (let row = 0; row < showAllDays / 7; row ++) {
+    for (let row = 0; row < showAllDays / 7; row++) {
       let week = [];
-      for (let col =0; col < 7; col ++) {
+      for (let col = 0; col < 7; col++) {
         let date = app.momentFormat(accountDay.add(1, 'day'));
         week.push({
           date,
@@ -108,7 +123,15 @@ Page({
       }
       dateArr.push(week);
     }
-    this.setData({dateArr})
+    this.setData({ dateArr })
+
+    this.animation.rotateY(this.i * 360).step()
+    
+    this.setData({
+      animation: this.animation.export()
+    });
+    this.i += 1;
+
     let request = calendarControl.getCalendars({
       memberIDs: app.globalData.mdAccountInfo.accountId,
       isWorkCalendar: true,
@@ -136,9 +159,9 @@ Page({
       })
       // 减一天开始循环
       let accountDay = showFirstDay.clone().subtract(1, 'day');
-      for (let row = 0; row < showAllDays / 7; row ++) {
+      for (let row = 0; row < showAllDays / 7; row++) {
         let week = [];
-        for (let col =0; col < 7; col ++) {
+        for (let col = 0; col < 7; col++) {
           let date = app.momentFormat(accountDay.add(1, 'day'));
           week.push({
             date,
@@ -152,7 +175,8 @@ Page({
         }
         dateArr.push(week);
       }
-      this.setData({dateArr})
+
+      this.setData({ dateArr })
     })
   },
   toNextMonth() {
@@ -165,7 +189,7 @@ Page({
   },
   touchstart(e) {
     this.clientX = e.changedTouches[0].clientX;
-    
+
   },
   touchend(e) {
     if (e.changedTouches[0].clientX - this.clientX > 170) {

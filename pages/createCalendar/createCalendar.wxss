@@ -3,6 +3,7 @@
 }
 .item-l {
   width: 150rpx;
+  padding-left: 20rpx;
 }
 .item-r {
   flex: 1;

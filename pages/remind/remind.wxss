@@ -9,6 +9,6 @@
 
 }
 .radio {
-  display: block;
-  padding: 15rpx 0;
+  display: inline;
+  padding: 15rpx 400rpx 0 15rpx;
 }
