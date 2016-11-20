@@ -42,9 +42,24 @@ function getRemindTxt(remindType, remindTime) {
   return remind;
 }
 
+function getApiRemindNum(remindType, remindTime) {
+  let remindNum;
+  if (remindType === 1) {
+    remindNum= parseInt(remindTime);
+  } else if (remindType === 2) {
+    remindNum= parseInt(remindTime) * 60;
+  } else if (remindType === 3) {
+    remindNum= parseInt(remindTime) * 1440;
+  } else {
+    remindNum= 15;
+  }
+  return remindNum;
+}
+
 module.exports = {
   formatTime,
   trim,
   json2Form,
   getRemindTxt,
+  getApiRemindNum,
 }

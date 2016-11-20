@@ -2,6 +2,11 @@
      background:  url('/image/bg.jpg') no-repeat fixed top;
 }
 
+.todayContainer:before {
+    content: '';
+    display: table;
+}
+
 
 .card {
     margin: 20rpx 20rpx;

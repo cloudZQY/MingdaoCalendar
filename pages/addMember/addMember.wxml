@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="detail-box">
+    <view class="users" wx:if="{{users.length > 1}}" wx:for="{{users}}" wx:for-item="user" wx:for-index="index">
+      <view class="user-item" wx:if="{{index !==0 }}" data-fullname="{{user.fullname}}" data-avatar="{{user.avatar}}" data-accountid="{{user.accountId}}" bindtap="addMember">
+        <text class="name" class="memberName">{{user.fullname}}</text>
+        <image class="head" src="{{user.avatar}}" mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+</view>

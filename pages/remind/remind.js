@@ -58,12 +58,11 @@ Page({
         wx.navigateBack()
       })
     } else {
-      wx.navigateBack({
-        remind: {
-          remindTime: this.data.remindTime,
-          remindType: this.data.remindType,
-        }
-      })
+      app.createData = {
+        remindTime: this.data.remindTime,
+        remindType: this.data.remindType,
+      }
+      wx.navigateBack()
     }
   }
 })

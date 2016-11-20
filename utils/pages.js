@@ -12,7 +12,6 @@ class Pages {
             "create": "/page/calendar/create/create",
             "edit": "/page/calendar/edit/edit",
             "list": "/page/calendar/list/list",
-
             "login":"/page/mingdao/login"
         }
     }

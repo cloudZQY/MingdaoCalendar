@@ -2,27 +2,33 @@
   <view class="detail-box">
     <view class="box-item">
       <view class="item-l">名称</view>
-      <view class="item-r"><input type="text" placeholder="输入日程名称"></input></view>
+      <view class="item-r"><input data-name="name" bindinput="handleInput" value="{{show.name}}" type="text" placeholder="输入日程名称"></input></view>
     </view>
     <view class="box-item">
       <view class="item-l">描述</view>
-      <view class="item-r"><input type="text" placeholder="输入日程描述"></input></view>
+      <view class="item-r"><input data-name="desc" bindinput="handleInput" value="{{show.desc}}" type="text" placeholder="输入日程描述"></input></view>
     </view>
     <view class="box-item">
       <view class="item-l">地点</view>
-      <view class="item-r"><input type="text" placeholder="输入日程地点"></input></view>
+      <view class="item-r"><input data-name="address" bindinput="handleInput" value="{{show.address}}" type="text" placeholder="输入日程地点"></input></view>
     </view>
   </view>
   <view class="detail-box">
     <view class="box-item">
-      <view class="item-l">提醒</view>
-      <view class="item-r"><text>{{show.remind}}</text></view>
-      <view class="more" bindtap="toRemind">{{'点击选择    >'}}</view>
+      <view class="item-l">时间</view>
+      <view class="item-r"><text>{{show.time}}</text></view>
+      <view class="more" bindtap="toTime">{{'点击修改    >'}}</view>
     </view>
     <view class="box-item">
-      <view class="item-l">人员</view>
-      <view class="item-r"><text></text></view>
-      <view class="more">{{'点击选择    >'}}</view>
+      <view class="item-l">提醒</view>
+      <view class="item-r"><text>{{show.remind}}</text></view>
+      <view class="more" bindtap="toRemind">{{'点击修改    >'}}</view>
+    </view>
+    <view class="box-item">
+      <view class="item-l">成员</view>
+      <view class="item-r"><text>{{show.members}}</text></view>
+      <view class="more" bindtap="toMember">{{'点击添加    >'}}</view>
     </view>
   </view>
+  <button class="createCalendar" bindtap="createCalendar">创建</button>
 </view>
