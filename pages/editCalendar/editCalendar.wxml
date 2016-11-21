@@ -1,28 +1,38 @@
 <view class="container">
   <view class="detail-box">
     <view class="edit-item">
+      <image src="/image/title.png" mode="aspectFill" class="icon" style="width: 35rpx;height: 35rpx; margin-top: 10rpx"></image>
       <view class="edit-l">标题</view>
       <view class="edit-r"><input bindinput="titleChange" placeholder="请输入标题" value="{{title}}"></input></view>
     </view>
     <view class="edit-item">
+      <image src="/image/desc.png" mode="aspectFill" class="icon"></image>
       <view class="edit-l">描述</view>
-      <view class="edit-r"><input bindinput="descChange" placeholder="请输入描述" value="{{desc}}"></input></view>
+      <view class="edit-r"><textarea bindinput="descChange" placeholder="请输入描述" value="{{desc}}" style="height: 130rpx;width: auto;"></textarea></view>
     </view>
     <view class="edit-item">
+      <image src="/image/address.png" mode="aspectFill" class="icon" style="width: 37rpx;height: 37rpx; margin-top: 6rpx"></image>
       <view class="edit-l">地址</view>
-      <view class="edit-r"><input bindinput="addressChange" placeholder="请输入地址" value="{{address}}"></input></view>
+      <view class="edit-r"  style="position:relative">
+        <input bindinput="addressChange" placeholder="请输入地址" value="{{address}}" style="margin-right: 80rpx"></input>
+        <view  bindtap="openMap"  style="position:absolute; right: 30rpx; top: 0rpx; z-index:10">
+        <image src="/image/position.png" mode="aspectFill" class="icon" style="width: 40rpx;height: 40rpx; "></image>
+        </view>
+      </view>
     </view>
   </view>
   <view class="detail-box">
       <view class="edit-item">
+      <image src="/image/clock.png" mode="aspectFill" class="icon" style="width: 38rpx;height: 38rpx; margin-top: 8rpx"></image>
         <view class="edit-l">时间</view>
         <view class="edit-r time" bindtap="toTime">
           <view>{{show.startTime}}</view>
           <view>{{show.endTime}}</view>
         </view>
+      <view class="more" style="margin-top: 4rpx;">{{'>'}}</view>
       </view>
   </view>
-  <view class="detail-box">
+  <view class="detail-box button-box">
     <button class="BGColor1 colorWhite" bindtap="submit">修改</button>
   </view>
 </view>

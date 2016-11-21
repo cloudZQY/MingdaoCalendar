@@ -77,6 +77,8 @@ Page({
               title,
               startTime: start.slice(-6),
               endTime: end.slice(-6),
+              startDate: start.slice(0, 10),
+              endDate: end.slice(0, 10),
               allDay,
               head,
               id,

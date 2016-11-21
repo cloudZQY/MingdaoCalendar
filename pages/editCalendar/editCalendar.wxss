@@ -1,11 +1,12 @@
 .edit-item {
-  padding: 20rpx;
+  padding: 20rpx 0;
   border-bottom: 1rpx solid #ccc;
   display: flex;
 }
 
 .edit-l {
   width: 200rpx;
+  margin-left: 20rpx;
 }
 .edit-r {
   flex: 1;

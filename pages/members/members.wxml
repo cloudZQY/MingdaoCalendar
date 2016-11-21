@@ -18,7 +18,7 @@
       </view>
     </view>
   </view>
-  <view class="detail-box">
-    <button class="addMember" bindtap="addMember">添加成员</button>
+  <view class="detail-box button-box">
+    <button class="addMember BGColor1 colorWhite" bindtap="addMember">添加成员</button>
   </view>
 </view>

@@ -19,7 +19,7 @@
           <text class="col">{{ravenEnd}}</text>
         </view>
 
-        <view class="col-spliter" style="border-right-color:{{color}};"></view>
+        <view class="col-spliter" style="border-right-color:#ccc;"></view>
 
         <view class="col" class="cal-name">
           <text class="word-break">{{calendarName}}</text>

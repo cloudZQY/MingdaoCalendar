@@ -131,6 +131,15 @@ Page({
         wx.navigateBack();
       })
   },
+      openMap() {
+      console.log(1)
+    wx.chooseLocation({
+      success: data => {
+          this.data.form.address = data.address + ' ' + data.name;
+          this.setshow()
+      }
+    })
+  },
   toMember() {
     app.globalData.members = [{
       accountId: app.globalData.mdAccountInfo.accountId,

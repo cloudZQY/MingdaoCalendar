@@ -70,7 +70,6 @@ Page({
   editInfo() {
     
   },
-
   onReady() {
 
   },

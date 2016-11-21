@@ -2,11 +2,10 @@
 <view class="container">
   <view class="detail-box">
     <view class="time-item">
-      <checkbox-group bindchange="checkboxChange">
-        <label class="checkbox" bindtap="changeAllDay">
-          <checkbox value="{{'isAll'}}" checked="{{isAll}}"/> 全天
-        </label>
-      </checkbox-group>
+          <text style="margin-left: 20rpx;margin-top:10rpx">全天</text>
+          <view class="switch">
+            <switch value="{{'isAll'}}" checked="{{isAll}}" bindchange="changeAllDay"/> 
+          </view>
     </view>
   </view>
   <view class="detail-box">

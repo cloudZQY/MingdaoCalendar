@@ -59,19 +59,17 @@ App({
     return new Promise(function (resolve, reject) {
       login.mDAccountLogin(formData).then(function (data) {
         const { accountResult, accountId } = data || {};
-        if (accountResult === 7) {
+        if (accountResult !== 1) {
           wx.showModal({
             title: '登陆失败',
             content: '账号或密码不正确',
             success: () => reject(),
           })
-        } else if (accountResult !== 1 || !accountId) {
-          wx.showModal({
-            title: '登录失败',
-            content: '返回状态码是 ' + accountResult,
-            success: () => reject(),
-          });
         } else {
+           wx.showToast({
+            title: '登录成功',
+            icon: 'sucess',
+          })
           setSessionId(data.sessionId);
           app.globalData.mdAccountId = accountId;
           resolve();

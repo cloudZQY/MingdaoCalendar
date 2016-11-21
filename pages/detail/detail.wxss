@@ -41,5 +41,18 @@
 }
 textarea {
   width: 100%;
-  height: 200px;
+  border-bottom: 1rpx solid #ccc;
+  transition: all linear 1s;
+}
+
+textarea.hide {
+  height: 0;
+  
+}
+textarea.show {
+  height: 160px;
+}
+
+.desc {
+  width: 485rpx;
 }

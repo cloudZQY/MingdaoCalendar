@@ -43,6 +43,7 @@ Page({
   },
   submit() {},
   addMember() {
+    app.addMember = null;
     wx.navigateTo({
       url: '../addMember/addMember?id=' + (this.data.id || '')
     })

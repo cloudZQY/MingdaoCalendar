@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <scroll-view class="container" bindscroll="scroll" scroll-y="true" bindscrolltolower="hideCreate" bindscrolltoupper="showCreate">
   <view class="date-nav BGColor1 colorWhite">
-    <image class="userHead" src="{{mdAccountInfo.avatar}}" bindlongtap="showExit" mode="scaleToFill"></image>
+    <image class="userHead" src="{{mdAccountInfo.avatar}}" bindtap="showExit" mode="scaleToFill"></image>
     <text class="prevMonth" bindtap="toPrevMonth">{{'<'}}</text>
     <text class="activeDate">{{date}}</text>
     <text class="nextMonth" bindtap="toNextMonth">{{'>'}}</text>
-    <text class="more-handle" bindtap="toList" style="display:{{unconfirm>0?'inline-block':'none'}}"></text>
+    <text class="more-handle" style="display:{{unconfirm>0?'inline-block':'none'}}"></text>
   </view>
   <view class="BGColor1 colorWhite flexRow textCenter weeks">
     <text class="flex">一</text>
@@ -30,7 +30,7 @@
     <view wx:for="{{calendars}}" wx:for-item="calendar" class="calendar-item" bindtap="toDetail" data-id="{{calendar.id}}">
       <view class="calendar-box-l">
         <text class="calendar-title overflow_ellipsis">{{calendar.title}}</text>
-        <text wx:if="{{calendar.allDay}}" class="calendar-title overflow_ellipsis">全天</text>
+        <text wx:if="{{calendar.allDay}}" class="calendar-title overflow_ellipsis">{{calendar.startDate}}（全天）</text>
         <text wx:if="{{!calendar.allDay}}" class="calendar-time">{{calendar.startTime}} - {{calendar.endTime}}</text>
       </view>
       <view class="calendar-box-r">
@@ -40,6 +40,7 @@
   </view>
   <view class="shadow {{showExit ? 'show' : ''}}" bindtap="hideExit">
     <view class="logout {{showExit ? 'show' : ''}}">
+      <button class="BGColor1 colorWhite" bindtap="toList" style="margin-bottom:20rpx;">未确认邀请</button>
       <button bindtap="logout">退出登录</button>
     </view>
   </view>

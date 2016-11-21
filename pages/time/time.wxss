@@ -19,3 +19,7 @@
 picker {
   position: relative;
 }
+
+.switch {
+  margin-left: 500rpx;
+}

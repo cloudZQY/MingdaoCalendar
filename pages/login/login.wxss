@@ -1,9 +1,6 @@
 .container {
     background-color: #fff;
 }
-.login-form {
-    margin-top:80px;
-}
 
 .account, .password {
     border-bottom: 1rpx solid #ccc;
@@ -27,4 +24,13 @@
 
 .submit {
     margin: 0 10rpx;
+}
+
+.logo {
+    width: 200rpx;
+    height: 200rpx;
+    margin: 0 auto;
+    display: block;
+    margin-top: 200rpx;
+    margin-bottom: 80rpx;
 }

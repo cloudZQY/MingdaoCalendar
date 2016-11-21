@@ -52,6 +52,16 @@ Page({
       }
     })
   },
+    openMap() {
+      console.log(1)
+    wx.chooseLocation({
+      success: data => {
+        this.setData({
+          address: data.address + ' ' + data.name,
+        })
+      }
+    })
+  },
   titleChange(e) {
     this.setData({
       title: e.detail.value

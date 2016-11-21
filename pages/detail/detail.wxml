@@ -8,6 +8,7 @@
   </view >
   <view class="detail-box">
     <view class="calendar-time box-item">
+        <image src="/image/clock.png" mode="aspectFill" class="icon"></image>
         <view class="detail-l">时间：</view>
         <view class="detail-r">
           <view>{{calendar.startTime}}</view>  
@@ -15,35 +16,42 @@
         </view>
       </view>
       <view wx:if="{{calendar.description}}" class="calendar-description box-item">
+        <image src="/image/desc.png" mode="aspectFill" class="icon"></image>
         <text class="detail-l">描述：</text>
-        <input type="text" class="detail-r" value="{{calendar.description}}"></input>
+        <view class="detail-r">
+          <text type="text" class="desc overflow_ellipsis" >{{calendar.description}}</text>
+        </view>
       </view>
-      <view wx:if="{{calendar.adress}}"  class="calendar-adress box-item">
+      <view wx:if="{{calendar.address}}"  class="calendar-adress box-item">
+        <image src="/image/address.png" mode="aspectFill" class="icon"  style="width: 37rpx;height: 37rpx; margin-top: 6rpx"></image>
         <text class="detail-l">地址</text>
-        <input type="text" class="detail-r">{{calendar.adress}}</input>
+        <text type="text" class="detail-r">{{calendar.address}}</text>
       </view>
   </view>
   <view class="detail-box">
       <view class="calendar-createUser box-item">
+        <image src="/image/people.png" mode="aspectFill" class="icon"></image>
         <text class="detail-l">发起人：</text>
         <text class="detail-r">{{calendar.createUserName}}</text>
       </view>
       <view class="calendar-createUser box-item" bindtap="toMembers">
+        <image src="/image/peoples.png" mode="aspectFill" class="icon"></image>
         <text class="detail-l">参与人员：</text>
         <text class="detail-r">{{calendar.members.length + '人'}}</text>
         <text class="more">{{">"}}</text>
       </view>
       <view class="calendar-remind box-item" bindtap="toRemind">
+        <image src="/image/ring.png" mode="aspectFill" class="icon"></image>
         <text class="detail-l">提醒：</text>
         <text class="detail-r">{{calendar.remind}}</text>
         <text class="more">{{">"}}</text>
       </view>
   </view>
-  <view class="detail-box">
+  <view class="detail-box button-box">
     <button class="BGColor1 colorWhite" bindtap="share">分享给好友</button>
   </view>
   <text style="padding-left:20rpx" wx:if="{{share}}">复制链接分享给好友</text>
   <view class="detail-box" wx:if="{{share}}">
-    <textarea type="text" value="{{shareTxt}}"></textarea>
+    <textarea type="text" value="{{shareTxt}} {{share ? 'show' : 'hide'}}"></textarea>
   </view>
 </view>

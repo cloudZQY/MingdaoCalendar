@@ -90,7 +90,7 @@
 }
 
 .calendar-box {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #1e88e5;
   background: #fff;
 }
 
@@ -178,6 +178,9 @@
   background-image: linear-gradient(red, red);
   background-clip: padding-box;
   border-radius: 50%;
+  position: absolute;
+  left: 88rpx;
+  top: 45rpx;
 }
 
 
